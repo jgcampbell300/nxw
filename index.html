@@ -149,6 +149,30 @@
             font-size: 0.9em;
         }
 
+        .status-online {
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .status-detail {
+            color: #b3d9ff;
+            font-size: 0.85em;
+            margin-left: 5px;
+        }
+
+        .metric-value {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .metric-label {
+            color: #888;
+            font-size: 0.8em;
+            margin-left: 4px;
+        }
+
         .card {
             background: #352845;
             border: 1px solid #443355;
@@ -253,16 +277,18 @@
         <div class="system-bar">
             <div class="system-item">
                 <h3>🔧</h3>
-                <div id="system-status" class="loading">Loading...</div>
-                <div id="status-detail" class="loading">Status: Loading...</div>
+                <span class="status-online">● Online</span>
+                <span class="status-detail">API Running</span>
             </div>
             <div class="system-item">
                 <h3>🌌</h3>
-                <div id="entity-count" class="loading">Loading...</div>
+                <span class="metric-value">0</span>
+                <span class="metric-label">entities</span>
             </div>
             <div class="system-item">
                 <h3>👥</h3>
-                <div id="session-count" class="loading">Loading...</div>
+                <span class="metric-value">0</span>
+                <span class="metric-label">sessions</span>
             </div>
         </div>
 
@@ -454,8 +480,22 @@
         async function loadSystemStatus() {
             const status = await fetchAPI('/');
             if (status) {
-                document.getElementById('system-status').innerHTML = 'Online';
-                document.getElementById('status-detail').innerHTML = `Status: ${status.message}`;
+                // Status is already set to "● Online API Running" in HTML
+                console.log('System status loaded:', status.message);
+            }
+        }
+
+        async function loadActiveSessions() {
+            const sessions = await fetchAPI('/sessions');
+            if (sessions) {
+                document.querySelector('.system-item:nth-child(3) .metric-value').textContent = sessions.count || 0;
+            }
+        }
+
+        async function loadEntityCount() {
+            const entities = await fetchAPI('/entities');
+            if (entities) {
+                document.querySelector('.system-item:nth-child(2) .metric-value').textContent = entities.count || 0;
             }
         }
 
@@ -491,13 +531,11 @@
             
             await Promise.all([
                 loadSystemStatus(),
+                loadActiveSessions(),
+                loadEntityCount(),
                 loadUniverseLevels(),
                 loadClientTypes()
             ]);
-
-            // Update counts with mock data
-            document.getElementById('entity-count').innerHTML = '<strong>🌍 Entities:</strong> <span style="color: #b3d9ff;">0</span>';
-            document.getElementById('session-count').innerHTML = '<strong>⚡ Sessions:</strong> <span style="color: #b3d9ff;">0</span>';
         }
 
         // Initialize on page load
