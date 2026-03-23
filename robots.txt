@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jgcampbell300.github.io/nxw/sitemap.xml
