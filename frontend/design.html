@@ -617,10 +617,7 @@
                     <div class="comments-section">
                         <div class="comments-header">
                         <div class="comments-title">💭 Design Notes (${level.comments.length})</div>
-                        <div style="display: flex; gap: 10px;">
-                            <button class="add-comment-btn" onclick="toggleCommentInput(${originalIndex})">+ Add Note</button>
-                            <button class="add-comment-btn" onclick="editLevel(${originalIndex})" style="background: linear-gradient(45deg, #d35400, #e67e22); color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.5); box-shadow: 0 2px 4px rgba(0,0,0,0.3);">✏️ Edit Level</button>
-                        </div>
+                        <button class="add-comment-btn" onclick="toggleCommentInput(${originalIndex})">+ Add Note</button>
                     </div>
                         
                         <div class="comment-input-container" id="input-${originalIndex}">
@@ -647,11 +644,14 @@
             }
 
             return comments.map((comment, commentIndex) => `
-                <div class="comment-item">
+                <div class="comment-item" id="comment-${levelIndex}-${commentIndex}">
                     <div class="comment-text">${comment.text}</div>
                     <div class="comment-meta">
                         <span>${comment.date}</span>
-                        <button class="delete-comment" onclick="deleteComment(${levelIndex}, ${commentIndex})">Delete</button>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="edit-comment-btn" onclick="editComment(${levelIndex}, ${commentIndex})" style="background: linear-gradient(45deg, #3498db, #2980b9); color: #ffffff; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">✏️ Edit</button>
+                            <button class="delete-comment" onclick="deleteComment(${levelIndex}, ${commentIndex})" style="background: linear-gradient(45deg, #e74c3c, #c0392b); color: #ffffff; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">🗑️ Delete</button>
+                        </div>
                     </div>
                 </div>
             `).join('');
@@ -698,6 +698,20 @@
                 universeLevels[levelIndex].comments.splice(commentIndex, 1);
                 saveComments();
                 renderHierarchy();
+            }
+        }
+
+        // Edit individual comment
+        function editComment(levelIndex, commentIndex) {
+            const comment = universeLevels[levelIndex].comments[commentIndex];
+            const newText = prompt('Edit your design note:', comment.text);
+            
+            if (newText && newText.trim()) {
+                comment.text = newText.trim();
+                comment.date = new Date().toLocaleString();
+                saveComments();
+                renderHierarchy();
+                showMessage('Design note updated successfully!', 'info');
             }
         }
 
