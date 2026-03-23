@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXW - Nxverse Web MMORPG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/immersive-space.css">
+</head>
+<body>
+    <div class="cosmic-background"></div>
+    <div class="stars" id="stars"></div>
+    
+    <div class="hero-header">
+        <div class="hero-logo">NXW</div>
+        <h1 class="hero-title">NXW</h1>
+        <p class="hero-subtitle">Nxverse Web - Multi-Scale MMORPG Universe</p>
+    </div>
+
+    <div class="immersive-dashboard">
+        <div class="cosmic-card">
+            <div class="card-header">
+                <div class="card-title">System Status</div>
+                <div class="status-indicator"></div>
+            </div>
+            <div id="system-status" class="loading-cosmic">Initializing quantum systems...</div>
+        </div>
+        
+        <div class="cosmic-card">
+            <div class="card-header">
+                <div class="card-title">Active Sessions</div>
+                <div class="status-indicator"></div>
+            </div>
+            <div id="session-count" class="loading-cosmic">Scanning neural networks...</div>
+        </div>
+        
+        <div class="cosmic-card">
+            <div class="card-header">
+                <div class="card-title">Universe Entities</div>
+                <div class="status-indicator"></div>
+            </div>
+            <div id="entity-count" class="loading-cosmic">Mapping cosmic structures...</div>
+        </div>
+    </div>
+
+    <div class="universe-container">
+        <div class="universe-showcase">
+            <h2 class="universe-title">Universe Hierarchy</h2>
+            <p class="universe-subtitle">From cosmic scale to building level</p>
+            <div class="levels-grid" id="universe-levels">
+                <div class="loading-cosmic">Loading universe levels...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clients-showcase">
+        <div class="clients-grid">
+            <div class="client-sphere" onclick="launchClient('factorio')">
+                <div class="client-icon-large">🏭</div>
+                <div class="client-title">Factorio</div>
+                <div class="client-desc">Factory building and automation</div>
+            </div>
+            
+            <div class="client-sphere" onclick="launchClient('empyrion')">
+                <div class="client-icon-large">🚀</div>
+                <div class="client-title">Empyrion</div>
+                <div class="client-desc">Space exploration and mining</div>
+            </div>
+            
+            <div class="client-sphere" onclick="launchClient('fps')">
+                <div class="client-icon-large">🔫</div>
+                <div class="client-title">FPS</div>
+                <div class="client-desc">First person combat and missions</div>
+            </div>
+            
+            <div class="client-sphere" onclick="launchClient('simcity')">
+                <div class="client-icon-large">🏙️</div>
+                <div class="client-title">SimCity</div>
+                <div class="client-desc">City building and management</div>
+            </div>
+            
+            <div class="client-sphere" onclick="launchClient('7dtd')">
+                <div class="client-icon-large">🧟</div>
+                <div class="client-title">7D2D</div>
+                <div class="client-desc">Survival and base building</div>
+            </div>
+            
+            <div class="client-sphere" onclick="launchClient('adventure')">
+                <div class="client-icon-large">⚔️</div>
+                <div class="client-title">Adventure</div>
+                <div class="client-desc">RPG-style quests and adventures</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-epic">
+        <h2 class="action-title">System Controls</h2>
+        <div class="action-buttons">
+            <button class="epic-btn" onclick="createTestEntity()">
+                🌍 Create Entity
+            </button>
+            <button class="epic-btn" onclick="createTestPlayer()">
+                👤 Create Player
+            </button>
+            <button class="epic-btn" onclick="refreshData()">
+                🔄 Refresh Data
+            </button>
+        </div>
+    </div>
+
+        <div id="message-area"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        async function fetchAPI(endpoint) {
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                showMessage(`Error: ${error.message}`, 'error');
+                return null;
+            }
+        }
+
+        function showMessage(message, type = 'info') {
+            const messageArea = document.getElementById('message-area');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type === 'error' ? 'error-cosmic' : 'status-cosmic';
+            messageDiv.textContent = message;
+            messageArea.appendChild(messageDiv);
+            setTimeout(() => messageDiv.remove(), 5000);
+        }
+
+        // Create animated starfield
+        function createStarfield() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        async function loadSystemStatus() {
+            const status = await fetchAPI('/');
+            if (status) {
+                document.getElementById('system-status').innerHTML = `
+                    <strong>🔧 Quantum Core:</strong> Online<br>
+                    <strong>⚡ Neural Network:</strong> ${status.version}<br>
+                    <strong>🌌 Status:</strong> ${status.message}
+                `;
+            }
+        }
+
+        async function loadUniverseLevels() {
+            const levels = await fetchAPI('/universe/levels');
+            if (levels) {
+                const container = document.getElementById('universe-levels');
+                container.innerHTML = levels.levels.map(level => 
+                    `<div class="level-orb">${level.replace('_', ' ').toUpperCase()}</div>`
+                ).join('');
+            }
+        }
+
+        async function loadClientTypes() {
+            // Client types are now hardcoded in the HTML showcase
+            // This function can be used for dynamic updates if needed
+        }
+
+        async function createTestEntity() {
+            const entity = {
+                id: `entity_${Date.now()}`,
+                name: "Test Solar System",
+                level: "solar_system",
+                position: { x: 0, y: 0, z: 0 },
+                available_clients: ["empyrion"],
+                available_resources: ["mineral", "gas"]
+            };
+
+            const result = await fetchAPI('/universe/entity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(entity)
+            });
+
+            if (result) {
+                showMessage(result.message, 'success');
+                refreshData();
+            }
+        }
+
+        async function createTestPlayer() {
+            const player = {
+                id: `player_${Date.now()}`,
+                username: `TestPlayer${Date.now()}`,
+                current_location_id: "entity_0",
+                inventory: {},
+                active_clients: []
+            };
+
+            const result = await fetchAPI('/players', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(player)
+            });
+
+            if (result) {
+                showMessage(result.message, 'success');
+                refreshData();
+            }
+        }
+
+        function launchClient(clientType) {
+            showMessage(`🚀 Launching ${clientType.toUpperCase()} client...`, 'info');
+            // TODO: Implement client launcher
+        }
+
+        async function refreshData() {
+            document.getElementById('entity-count').innerHTML = '<div class="loading-cosmic">Scanning cosmos...</div>';
+            document.getElementById('session-count').innerHTML = '<div class="loading-cosmic">Pinging nodes...</div>';
+            
+            await Promise.all([
+                loadSystemStatus(),
+                loadUniverseLevels(),
+                loadClientTypes()
+            ]);
+
+            // Update counts
+            document.getElementById('entity-count').innerHTML = '<strong>🌍 Entities:</strong> <span style="color: var(--aurora-green);">0</span>';
+            document.getElementById('session-count').innerHTML = '<strong>⚡ Sessions:</strong> <span style="color: var(--stellar-cyan);">0</span>';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            createStarfield();
+            refreshData();
+        });
+    </script>
+</body>
+</html>

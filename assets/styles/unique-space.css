@@ -1,0 +1,635 @@
+/* NXW Unique Space Theme - Distinctive & Immersive Design */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;700&display=swap');
+
+:root {
+    /* Enhanced cosmic palette */
+    --void-black: #000008;
+    --deep-purple: #1a0033;
+    --cosmic-indigo: #2d1b69;
+    --nebula-magenta: #ff006e;
+    --stellar-cyan: #00ffff;
+    --aurora-emerald: #00ff88;
+    --solar-gold: #ffbe0b;
+    --plasma-pink: #fb5607;
+    --quantum-violet: #8338ec;
+    --antimatter-blue: #3a86ff;
+    
+    /* Unique gradients */
+    --gradient-void: radial-gradient(ellipse at center, var(--deep-purple) 0%, var(--void-black) 70%);
+    --gradient-nebula: conic-gradient(from 180deg at 50% 50%, var(--nebula-magenta), var(--quantum-violet), var(--cosmic-indigo), var(--nebula-magenta));
+    --gradient-quantum: linear-gradient(45deg, var(--quantum-violet), var(--antimatter-blue), var(--stellar-cyan));
+    --gradient-plasma: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--plasma-pink), var(--solar-gold), transparent 50%);
+    
+    /* Effects */
+    --glow-quantum: 0 0 30px rgba(131, 56, 236, 0.6), 0 0 60px rgba(58, 134, 255, 0.4);
+    --glow-nebula: 0 0 40px rgba(255, 0, 110, 0.5), 0 0 80px rgba(131, 56, 236, 0.3);
+    --shadow-void: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(131, 56, 236, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Exo 2', 'Orbitron', sans-serif;
+    background: var(--void-black);
+    color: var(--stellar-cyan);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    cursor: crosshair;
+}
+
+/* Dynamic particle background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-void);
+    z-index: -3;
+}
+
+/* Animated nebula clouds */
+body::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient-nebula);
+    opacity: 0.1;
+    animation: nebula-rotate 60s linear infinite;
+    z-index: -2;
+}
+
+@keyframes nebula-rotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Interactive plasma field */
+.plasma-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: var(--gradient-plasma);
+    opacity: 0.3;
+    mix-blend-mode: screen;
+}
+
+/* Quantum particles */
+.quantum-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--stellar-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--stellar-cyan);
+    animation: float-particle 20s infinite linear;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(90vh) translateX(10px) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(10vh) translateX(-10px) scale(1);
+    }
+    100% {
+        transform: translateY(0vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Unique header with holographic effect */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.holographic-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: hologram-rotate 10s linear infinite;
+}
+
+@keyframes hologram-rotate {
+    0% { transform: rotateY(0deg) rotateX(0deg); }
+    50% { transform: rotateY(180deg) rotateX(10deg); }
+    100% { transform: rotateY(360deg) rotateX(0deg); }
+}
+
+.logo-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-quantum);
+    border-radius: 50%;
+    box-shadow: var(--glow-quantum);
+}
+
+.logo-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 3px solid transparent;
+    border-top-color: var(--nebula-magenta);
+    border-right-color: var(--stellar-cyan);
+    border-radius: 50%;
+    animation: ring-spin 3s linear infinite;
+}
+
+@keyframes ring-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+h1 {
+    font-size: 5em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--nebula-magenta), var(--stellar-cyan), var(--aurora-emerald));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    animation: text-flicker 3s ease-in-out infinite;
+}
+
+@keyframes text-flicker {
+    0%, 100% { opacity: 1; filter: brightness(1); }
+    50% { opacity: 0.8; filter: brightness(1.2); }
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: var(--aurora-emerald);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Unique hexagonal grid layout */
+.hex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    padding: 40px 0;
+}
+
+.hex-card {
+    background: linear-gradient(135deg, rgba(26, 0, 51, 0.9), rgba(0, 0, 8, 0.9));
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(26, 0, 51, 0.9), rgba(0, 0, 8, 0.9)), 
+                      linear-gradient(45deg, var(--nebula-magenta), var(--quantum-violet));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    transform-style: preserve-3d;
+}
+
+.hex-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-nebula);
+    border-radius: 20px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+    animation: hex-pulse 4s ease-in-out infinite;
+}
+
+@keyframes hex-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.hex-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: var(--shadow-void);
+}
+
+.hex-card:hover::before {
+    opacity: 0.3;
+}
+
+.hex-card h3 {
+    color: var(--stellar-cyan);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.hex-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-quantum);
+    animation: scan-line 2s linear infinite;
+}
+
+@keyframes scan-line {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Unique universe hierarchy with orbital layout */
+.universe-orbital {
+    background: radial-gradient(ellipse at center, rgba(45, 27, 105, 0.3), transparent 70%);
+    border-radius: 30px;
+    padding: 60px;
+    margin-bottom: 60px;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.orbital-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-quantum);
+    border-radius: 50%;
+    box-shadow: var(--glow-quantum);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2em;
+    color: white;
+}
+
+.orbital-ring {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: orbital-rotate 60s linear infinite;
+}
+
+.orbital-ring:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    animation-duration: 40s;
+}
+
+.orbital-ring:nth-child(3) {
+    width: 300px;
+    height: 300px;
+    animation-duration: 60s;
+    animation-direction: reverse;
+}
+
+.orbital-ring:nth-child(4) {
+    width: 400px;
+    height: 400px;
+    animation-duration: 80s;
+}
+
+@keyframes orbital-rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.orbital-item {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-nebula);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.orbital-item:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
+}
+
+/* Unique client showcase with holographic cards */
+.client-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.hologram-card {
+    background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(58, 134, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.hologram-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.hologram-card:hover::before {
+    left: 100%;
+}
+
+.hologram-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    border-color: var(--stellar-cyan);
+    box-shadow: 0 20px 40px rgba(58, 134, 255, 0.3);
+}
+
+.client-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--gradient-quantum);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    position: relative;
+}
+
+.client-icon::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: var(--gradient-nebula);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.5;
+    animation: icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.hologram-card h4 {
+    color: var(--nebula-magenta);
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hologram-card p {
+    color: var(--stellar-cyan);
+    font-size: 0.95em;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Unique action buttons with quantum effects */
+.quantum-btn {
+    background: linear-gradient(45deg, var(--quantum-violet), var(--antimatter-blue));
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(131, 56, 236, 0.3);
+}
+
+.quantum-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.quantum-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(131, 56, 236, 0.5);
+    filter: brightness(1.2);
+}
+
+.quantum-btn:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.quantum-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Status displays with futuristic styling */
+.status-display {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 255, 0.1));
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--aurora-emerald), var(--stellar-cyan));
+    animation: status-scan 2s linear infinite;
+}
+
+@keyframes status-scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.loading-display {
+    background: linear-gradient(135deg, rgba(255, 190, 11, 0.1), rgba(251, 86, 7, 0.1));
+    border: 1px solid rgba(255, 190, 11, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    color: var(--solar-gold);
+    animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+.error-display {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(251, 86, 7, 0.1));
+    border: 1px solid rgba(255, 0, 110, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    color: var(--nebula-magenta);
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3em;
+        letter-spacing: 4px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .hex-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .client-showcase {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .universe-orbital {
+        padding: 40px 20px;
+        min-height: 400px;
+    }
+    
+    .orbital-ring:nth-child(2) {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .orbital-ring:nth-child(3) {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .orbital-ring:nth-child(4) {
+        width: 290px;
+        height: 290px;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--void-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-quantum);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-nebula);
+}

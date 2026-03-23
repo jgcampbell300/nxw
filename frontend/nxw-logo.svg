@@ -1,0 +1,66 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cosmic gradient -->
+    <linearGradient id="cosmicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B46C1;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Star field pattern -->
+    <pattern id="stars" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="white" opacity="0.8"/>
+      <circle cx="30" cy="25" r="0.5" fill="white" opacity="0.6"/>
+      <circle cx="50" cy="5" r="1.5" fill="white" opacity="0.9"/>
+      <circle cx="70" cy="40" r="0.8" fill="white" opacity="0.7"/>
+      <circle cx="90" cy="20" r="1" fill="white" opacity="0.8"/>
+      <circle cx="25" cy="60" r="0.6" fill="white" opacity="0.5"/>
+      <circle cx="80" cy="80" r="1.2" fill="white" opacity="0.9"/>
+      <circle cx="15" cy="90" r="0.4" fill="white" opacity="0.6"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background circle with star field -->
+  <circle cx="100" cy="100" r="95" fill="url(#stars)" opacity="0.3"/>
+  
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#cosmicGradient)" stroke-width="3" filter="url(#glow)" opacity="0.8"/>
+  
+  <!-- Inner hexagon representing universe levels -->
+  <path d="M 100 25 L 145 50 L 145 100 L 100 125 L 55 100 L 55 50 Z" 
+        fill="none" stroke="url(#cosmicGradient)" stroke-width="2" filter="url(#glow)" opacity="0.9"/>
+  
+  <!-- Central sphere representing the multiverse -->
+  <circle cx="100" cy="75" r="25" fill="url(#cosmicGradient)" opacity="0.3"/>
+  <circle cx="100" cy="75" r="20" fill="none" stroke="url(#cosmicGradient)" stroke-width="2" filter="url(#glow)"/>
+  
+  <!-- Orbiting elements -->
+  <circle cx="100" cy="75" r="35" fill="none" stroke="url(#cosmicGradient)" stroke-width="1" opacity="0.6" stroke-dasharray="5,5"/>
+  
+  <!-- Orbiting nodes -->
+  <circle cx="135" cy="75" r="4" fill="url(#cosmicGradient)" filter="url(#glow)"/>
+  <circle cx="100" cy="40" r="3" fill="url(#cosmicGradient)" filter="url(#glow)"/>
+  <circle cx="65" cy="75" r="4" fill="url(#cosmicGradient)" filter="url(#glow)"/>
+  <circle cx="100" cy="110" r="3" fill="url(#cosmicGradient)" filter="url(#glow)"/>
+  
+  <!-- NXW Text -->
+  <text x="100" y="160" font-family="Orbitron, monospace" font-size="28" font-weight="900" text-anchor="middle" fill="url(#cosmicGradient)" filter="url(#glow)">
+    NXW
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="180" font-family="Orbitron, monospace" font-size="10" font-weight="400" text-anchor="middle" fill="url(#cosmicGradient)" opacity="0.8">
+    N X V E R S E
+  </text>
+</svg>

@@ -1,0 +1,476 @@
+/* NXW Space Theme - Dark, Vibrant, Cosmic Design */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+    /* Space color palette */
+    --cosmic-purple: #6B46C1;
+    --nebula-pink: #EC4899;
+    --stellar-blue: #3B82F6;
+    --aurora-green: #10B981;
+    --solar-orange: #F59E0B;
+    --deep-space: #0F0A1F;
+    --void-black: #050510;
+    --star-white: #F8FAFC;
+    --galaxy-cyan: #06B6D4;
+    --plasma-red: #EF4444;
+    
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 25%, var(--stellar-blue) 50%, var(--nebula-pink) 75%, var(--void-black) 100%);
+    --gradient-nebula: linear-gradient(45deg, var(--cosmic-purple), var(--nebula-pink), var(--stellar-blue));
+    --gradient-aurora: linear-gradient(90deg, var(--aurora-green), var(--galaxy-cyan), var(--stellar-blue));
+    --gradient-solar: radial-gradient(circle, var(--solar-orange), var(--plasma-red));
+    
+    /* Effects */
+    --glow-cosmic: 0 0 20px rgba(107, 70, 193, 0.5);
+    --glow-stellar: 0 0 15px rgba(59, 130, 246, 0.6);
+    --glow-nebula: 0 0 25px rgba(236, 72, 153, 0.4);
+    --glow-aurora: 0 0 30px rgba(16, 185, 129, 0.5);
+    
+    /* Shadows */
+    --shadow-cosmic: 0 10px 40px rgba(107, 70, 193, 0.3);
+    --shadow-stellar: 0 8px 32px rgba(59, 130, 246, 0.4);
+    --shadow-nebula: 0 12px 48px rgba(236, 72, 153, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', 'Segoe UI', monospace;
+    background: var(--deep-space);
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animated starfield background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent);
+    background-size: 200% 200%;
+    animation: starfield 120s linear infinite;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-cosmic);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+@keyframes starfield {
+    0% { background-position: 0% 0%; }
+    100% { background-position: -200% -200%; }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header with cosmic styling */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: 15px;
+    background: var(--gradient-nebula);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: var(--glow-cosmic);
+    animation: pulse-glow 3s ease-in-out infinite;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.subtitle {
+    font-size: 1.4em;
+    color: var(--galaxy-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+/* Logo styling */
+.logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--gradient-nebula);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--star-white);
+    box-shadow: var(--glow-cosmic);
+    animation: rotate-logo 20s linear infinite;
+}
+
+@keyframes rotate-logo {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced cards with cosmic theme */
+.card {
+    background: rgba(15, 10, 31, 0.8);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(15, 10, 31, 0.8), rgba(15, 10, 31, 0.8)), 
+                      var(--gradient-nebula);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient-aurora);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-nebula);
+    border-color: var(--nebula-pink);
+}
+
+.card:hover::before {
+    opacity: 0.1;
+}
+
+.card h3 {
+    color: var(--nebula-pink);
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Universe hierarchy with cosmic styling */
+.universe-hierarchy {
+    background: rgba(15, 10, 31, 0.9);
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 50px;
+    border: 2px solid var(--cosmic-purple);
+    box-shadow: var(--shadow-cosmic);
+    position: relative;
+    overflow: hidden;
+}
+
+.universe-hierarchy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-aurora);
+    animation: aurora-flow 3s ease-in-out infinite;
+}
+
+@keyframes aurora-flow {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.universe-hierarchy h2 {
+    color: var(--stellar-blue);
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hierarchy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.hierarchy-item {
+    background: linear-gradient(135deg, rgba(107, 70, 193, 0.2), rgba(59, 130, 246, 0.2));
+    border: 1px solid rgba(107, 70, 193, 0.5);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.hierarchy-item::before {
+    content: '🌌';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2em;
+    opacity: 0.3;
+}
+
+.hierarchy-item:hover {
+    background: linear-gradient(135deg, rgba(107, 70, 193, 0.4), rgba(59, 130, 246, 0.4));
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--glow-stellar);
+    border-color: var(--stellar-blue);
+}
+
+/* Enhanced client cards */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.client-card {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1));
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid rgba(236, 72, 153, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.client-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-nebula);
+    border-radius: 18px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.client-card:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: var(--shadow-nebula);
+}
+
+.client-card:hover::before {
+    opacity: 0.3;
+}
+
+.client-card h4 {
+    color: var(--nebula-pink);
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.client-card p {
+    color: var(--galaxy-cyan);
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* Enhanced buttons */
+.btn {
+    background: var(--gradient-nebula);
+    color: var(--star-white);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9em;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--glow-nebula);
+    filter: brightness(1.2);
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Status and message styling */
+.status, .loading, .error {
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.status {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: var(--aurora-green);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.loading {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    color: var(--solar-orange);
+    animation: pulse-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-loading {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.error {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(185, 28, 28, 0.2));
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: var(--plasma-red);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Dashboard enhancements */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .clients-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hierarchy-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+/* Icon animations */
+.icon-spin {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.icon-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--void-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-nebula);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--stellar-blue);
+}

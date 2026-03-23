@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXW - Nxverse Web MMORPG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000033;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: #352845;
+            border: 1px solid #443355;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .status {
+            background: rgba(100, 200, 255, 0.15);
+            border: 1px solid rgba(100, 200, 255, 0.3);
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            color: #b3d9ff;
+        }
+
+        .loading {
+            background: rgba(100, 200, 255, 0.15);
+            border: 1px solid rgba(100, 200, 255, 0.3);
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            color: #b3d9ff;
+        }
+
+        .error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="text-align: center; margin-bottom: 10px;">
+                <img src="nxw-logo.svg" alt="NXW Logo" style="width: 120px; height: 120px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; font-size: 3em; font-weight: 900; background: linear-gradient(45deg, #00ffff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NXW</div>
+            </div>
+            <div class="subtitle">Nxverse Web - Multi-Scale MMORPG Universe</div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h3>System Status</h3>
+                <div id="system-status" class="loading">Loading...</div>
+            </div>
+            <div class="card">
+                <h3>Active Sessions</h3>
+                <div id="session-count" class="loading">Loading...</div>
+            </div>
+            <div class="card">
+                <h3>Universe Entities</h3>
+                <div id="entity-count" class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Universe Hierarchy</h3>
+            <div id="universe-levels" class="loading">Loading universe levels...</div>
+        </div>
+
+        <div class="card">
+            <h3>Game Clients</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div class="card" style="text-align: center; cursor: pointer;" onclick="launchClient('factorio')">
+                    <div style="font-size: 2em;">🏭</div>
+                    <div><strong>Factorio</strong></div>
+                    <div style="font-size: 0.9em; color: #888;">Factory building</div>
+                </div>
+                <div class="card" style="text-align: center; cursor: pointer;" onclick="launchClient('empyrion')">
+                    <div style="font-size: 2em;">🚀</div>
+                    <div><strong>Empyrion</strong></div>
+                    <div style="font-size: 0.9em; color: #888;">Space mining</div>
+                </div>
+                <div class="card" style="text-align: center; cursor: pointer;" onclick="launchClient('fps')">
+                    <div style="font-size: 2em;">🔫</div>
+                    <div><strong>FPS</strong></div>
+                    <div style="font-size: 0.9em; color: #888;">Combat missions</div>
+                </div>
+                <div class="card" style="text-align: center; cursor: pointer;" onclick="launchClient('simcity')">
+                    <div style="font-size: 2em;">🏙️</div>
+                    <div><strong>SimCity</strong></div>
+                    <div style="font-size: 0.9em; color: #888;">City building</div>
+                </div>
+                <div class="card" style="text-align: center; cursor: pointer;" onclick="launchClient('7dtd')">
+                    <div style="font-size: 2em;">🧟</div>
+                    <div><strong>7D2D</strong></div>
+                    <div style="font-size: 0.9em; color: #888;">Survival</div>
+                </div>
+                <div class="card" style="text-align: center; cursor: pointer;" onclick="launchClient('adventure')">
+                    <div style="font-size: 2em;">⚔️</div>
+                    <div><strong>Adventure</strong></div>
+                    <div style="font-size: 0.9em; color: #888;">RPG quests</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Important Disclaimer</h3>
+            <div style="background: #cc0000; border: 2px solid #ff0000; border-radius: 4px; padding: 15px; margin: 10px 0;">
+                <p style="color: #ffff00; font-weight: bold;"><strong>NOT AFFILIATED DISCLAIMER:</strong> NXW is not affiliated with, endorsed by, or connected to any of the games mentioned (Factorio, Empyrion, FPS games, SimCity, 7 Days to Die, or any adventure games). These are listed solely as examples of potential gameplay styles and client types that could be implemented in the NXW universe. All game names and trademarks belong to their respective owners.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Home</h3>
+            <p style="color: #b3d9ff; margin-bottom: 15px;">Welcome to NXW - Your gateway to the multi-scale MMORPG universe.</p>
+            <p style="color: #888; font-size: 0.9em; line-height: 1.4;">Explore a massive universe spanning from cosmic scale to building level, with multiple gameplay styles and client types to suit every player.</p>
+        </div>
+
+        <div id="message-area"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        async function fetchAPI(endpoint) {
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                showMessage(`Error: ${error.message}`, 'error');
+                return null;
+            }
+        }
+
+        function showMessage(message, type = 'info') {
+            const messageArea = document.getElementById('message-area');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type === 'error' ? 'error' : 'status';
+            messageDiv.textContent = message;
+            messageArea.appendChild(messageDiv);
+            setTimeout(() => messageDiv.remove(), 5000);
+        }
+
+        async function loadSystemStatus() {
+            const status = await fetchAPI('/');
+            if (status) {
+                document.getElementById('system-status').innerHTML = `
+                    <strong>API Status:</strong> Online<br>
+                    <strong>Version:</strong> ${status.version}<br>
+                    <strong>Status:</strong> ${status.message}
+                `;
+            }
+        }
+
+        async function loadUniverseLevels() {
+            const levels = await fetchAPI('/universe/levels');
+            if (levels) {
+                const container = document.getElementById('universe-levels');
+                container.innerHTML = levels.levels.map(level => 
+                    `<span style="display: inline-block; background: #333; padding: 5px 10px; margin: 2px; border-radius: 3px;">${level.replace('_', ' ').toUpperCase()}</span>`
+                ).join('');
+            }
+        }
+
+        async function loadClientTypes() {
+            // Clients are hardcoded above
+        }
+
+        async function createTestEntity() {
+            const entity = {
+                id: `entity_${Date.now()}`,
+                name: "Test Solar System",
+                level: "solar_system",
+                position: { x: 0, y: 0, z: 0 },
+                available_clients: ["empyrion"],
+                available_resources: ["mineral", "gas"]
+            };
+
+            const result = await fetchAPI('/universe/entity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(entity)
+            });
+
+            if (result) {
+                showMessage(result.message, 'success');
+                refreshData();
+            }
+        }
+
+        async function createTestPlayer() {
+            const player = {
+                id: `player_${Date.now()}`,
+                username: `TestPlayer${Date.now()}`,
+                current_location_id: "entity_0",
+                inventory: {},
+                active_clients: []
+            };
+
+            const result = await fetchAPI('/players', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(player)
+            });
+
+            if (result) {
+                showMessage(result.message, 'success');
+                refreshData();
+            }
+        }
+
+        function launchClient(clientType) {
+            showMessage(`Launching ${clientType} client...`, 'info');
+        }
+
+        async function refreshData() {
+            document.getElementById('entity-count').innerHTML = '<div class="loading">Loading...</div>';
+            document.getElementById('session-count').innerHTML = '<div class="loading">Loading...</div>';
+            
+            await Promise.all([
+                loadSystemStatus(),
+                loadUniverseLevels(),
+                loadClientTypes()
+            ]);
+
+            document.getElementById('entity-count').innerHTML = '<strong>Entities:</strong> 0';
+            document.getElementById('session-count').innerHTML = '<strong>Sessions:</strong> 0';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', refreshData);
+    </script>
+</body>
+</html>

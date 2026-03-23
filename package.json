@@ -1,0 +1,26 @@
+{
+  "name": "nxw",
+  "version": "0.1.0",
+  "description": "Nxverse Web - Multi-Scale MMORPG Universe",
+  "main": "frontend/index.html",
+  "scripts": {
+    "start": "python backend/app.py",
+    "dev": "uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000",
+    "frontend": "python -m http.server 3000 --directory frontend",
+    "install": "pip install -r backend/requirements.txt",
+    "test": "python -m pytest"
+  },
+  "keywords": ["mmorpg", "game", "universe", "multi-scale", "space", "factory"],
+  "author": "NXW Team",
+  "license": "MIT",
+  "dependencies": {
+    "fastapi": "^0.104.1",
+    "uvicorn": "^0.24.0",
+    "pydantic": "^2.5.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.4.0",
+    "black": "^23.0.0",
+    "flake8": "^6.0.0"
+  }
+}

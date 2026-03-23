@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXW Game Design & Planning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000033;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .design-section {
+            background: #352845;
+            border: 1px solid #443355;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hierarchy-container {
+            display: grid;
+            gap: 20px;
+        }
+
+        .level-item {
+            background: #2a1a3a;
+            border: 2px solid #443355;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .level-item:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .level-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ff00ff;
+        }
+
+        .level-number {
+            background: #00ffff;
+            color: #000033;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .level-description {
+            color: #b3d9ff;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+        }
+
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .comments-title {
+            font-weight: bold;
+            color: #ffff00;
+        }
+
+        .add-comment-btn {
+            background: #00ffff;
+            color: #000033;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .add-comment-btn:hover {
+            transform: scale(1.05);
+            background: #ffffff;
+        }
+
+        .comment-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .comment-item {
+            background: rgba(100, 200, 255, 0.1);
+            border: 1px solid rgba(100, 200, 255, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .comment-text {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .delete-comment {
+            background: #cc0000;
+            color: #ffff00;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        .delete-comment:hover {
+            background: #ff0000;
+        }
+
+        .comment-input-container {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .comment-input {
+            width: 100%;
+            background: #1a1a2a;
+            border: 1px solid #443355;
+            border-radius: 6px;
+            padding: 12px;
+            color: #ffffff;
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: #00ffff;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .save-btn {
+            background: #00ff88;
+            color: #000033;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cancel-btn {
+            background: #666;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .game-flow-section {
+            background: #352845;
+            border: 1px solid #443355;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .flow-item {
+            background: #2a1a3a;
+            border: 2px solid #443355;
+            border-radius: 8px;
+            padding: 15px 25px;
+            text-align: center;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .flow-arrow {
+            color: #00ffff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .export-btn {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #000033;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .export-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #443355;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #554466;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">NXW</div>
+            <div class="subtitle">Game Design & Planning Platform</div>
+        </header>
+
+        <div class="design-section">
+            <h2 class="section-title">🎮 Game Flow & Player Journey</h2>
+            <div class="flow-diagram">
+                <div class="flow-item">🌟 Character Creation</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-item">🌍 Choose Starting Location</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-item">🎯 Tutorial & Basic Training</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-item">🚀 Select Client Type</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-item">⚡ Begin Multi-Scale Adventure</div>
+            </div>
+        </div>
+
+        <div class="game-flow-section">
+            <h2 class="section-title">🌌 Universe Hierarchy Design</h2>
+            <div class="hierarchy-container" id="hierarchy-container">
+                <!-- Levels will be generated here -->
+            </div>
+        </div>
+
+        <button class="export-btn" onclick="exportDesign()">📋 Export Design Document</button>
+    </div>
+
+    <script>
+        // Universe levels data
+        const universeLevels = [
+            {
+                name: "Universe",
+                number: 1,
+                description: "The entire game cosmos containing all superclusters and cosmic structures.",
+                comments: []
+            },
+            {
+                name: "Superclusters",
+                number: 2,
+                description: "Large-scale cosmic structures containing multiple galaxy clusters.",
+                comments: []
+            },
+            {
+                name: "Galaxy Clusters",
+                number: 3,
+                description: "Groups of galaxies bound together by gravity.",
+                comments: []
+            },
+            {
+                name: "Galaxy Groups",
+                number: 4,
+                description: "Small collections of galaxies that interact gravitationally.",
+                comments: []
+            },
+            {
+                name: "Galaxies",
+                number: 5,
+                description: "Star systems collections with billions of stars and planets.",
+                comments: []
+            },
+            {
+                name: "Solar Neighborhood",
+                number: 6,
+                description: "Local stellar region around our starting point.",
+                comments: []
+            },
+            {
+                name: "Solar System",
+                number: 7,
+                description: "Individual star with planets, asteroids, and space stations.",
+                comments: []
+            },
+            {
+                name: "Planets",
+                number: 8,
+                description: "Individual worlds with unique biomes and resources.",
+                comments: []
+            },
+            {
+                name: "Biosphere",
+                number: 9,
+                description: "Planetary life zones supporting various ecosystems.",
+                comments: []
+            },
+            {
+                name: "Biomes",
+                number: 10,
+                description: "Specific ecological regions with unique flora and fauna.",
+                comments: []
+            },
+            {
+                name: "Continents",
+                number: 11,
+                description: "Major land masses on planetary surfaces.",
+                comments: []
+            },
+            {
+                name: "Hemispheres",
+                number: 12,
+                description: "Planetary divisions affecting climate and gameplay.",
+                comments: []
+            },
+            {
+                name: "Regions",
+                number: 13,
+                description: "Geographic areas with distinct characteristics.",
+                comments: []
+            },
+            {
+                name: "Countries",
+                number: 14,
+                description: "Nations or states with governments and laws.",
+                comments: []
+            },
+            {
+                name: "States/Provinces",
+                number: 15,
+                description: "Sub-national divisions with local governance.",
+                comments: []
+            },
+            {
+                name: "Counties",
+                number: 16,
+                description: "Local administrative areas.",
+                comments: []
+            },
+            {
+                name: "Cities/Towns",
+                number: 17,
+                description: "Urban centers with infrastructure and services.",
+                comments: []
+            },
+            {
+                name: "Neighborhoods",
+                number: 18,
+                description: "District areas within cities.",
+                comments: []
+            },
+            {
+                name: "Streets",
+                number: 19,
+                description: "Addressable locations for buildings and properties.",
+                comments: []
+            },
+            {
+                name: "Addresses",
+                number: 20,
+                description: "Specific property locations.",
+                comments: []
+            },
+            {
+                name: "Buildings",
+                number: 21,
+                description: "Structures for various purposes (homes, factories, etc.).",
+                comments: []
+            },
+            {
+                name: "Units/Apartments",
+                number: 22,
+                description: "Individual living or working spaces within buildings.",
+                comments: []
+            },
+            {
+                name: "Rooms",
+                number: 23,
+                description: "Specific locations within units for detailed gameplay.",
+                comments: []
+            }
+        ];
+
+        // Load saved comments from localStorage
+        function loadComments() {
+            const saved = localStorage.getItem('nxw-design-comments');
+            if (saved) {
+                const savedComments = JSON.parse(saved);
+                universeLevels.forEach((level, index) => {
+                    if (savedComments[index]) {
+                        level.comments = savedComments[index];
+                    }
+                });
+            }
+        }
+
+        // Save comments to localStorage
+        function saveComments() {
+            const commentsData = universeLevels.map(level => level.comments);
+            localStorage.setItem('nxw-design-comments', JSON.stringify(commentsData));
+        }
+
+        // Render hierarchy levels
+        function renderHierarchy() {
+            const container = document.getElementById('hierarchy-container');
+            container.innerHTML = '';
+
+            // Reverse the order - Rooms at top, Universe at bottom
+            const reversedLevels = [...universeLevels].reverse();
+
+            reversedLevels.forEach((level, reversedIndex) => {
+                const originalIndex = universeLevels.length - 1 - reversedIndex;
+                
+                const levelDiv = document.createElement('div');
+                levelDiv.className = 'level-item';
+                levelDiv.innerHTML = `
+                    <div class="level-header">
+                        <div class="level-name">${level.name}</div>
+                        <div class="level-number">${level.number}</div>
+                    </div>
+                    <div class="level-description">${level.description}</div>
+                    
+                    <div class="comments-section">
+                        <div class="comments-header">
+                            <div class="comments-title">💭 Design Notes (${level.comments.length})</div>
+                            <button class="add-comment-btn" onclick="toggleCommentInput(${originalIndex})">+ Add Note</button>
+                        </div>
+                        
+                        <div class="comment-input-container" id="input-${originalIndex}">
+                            <textarea class="comment-input" id="comment-text-${originalIndex}" placeholder="Enter your design notes, ideas, or plans for this level..."></textarea>
+                            <div class="comment-actions">
+                                <button class="save-btn" onclick="saveComment(${originalIndex})">Save</button>
+                                <button class="cancel-btn" onclick="toggleCommentInput(${originalIndex})">Cancel</button>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-list" id="comments-${originalIndex}">
+                            ${renderComments(level.comments, originalIndex)}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(levelDiv);
+            });
+        }
+
+        // Render comments for a level
+        function renderComments(comments, levelIndex) {
+            if (comments.length === 0) {
+                return '<div style="color: #666; text-align: center; padding: 20px;">No design notes yet. Click "Add Note" to start planning!</div>';
+            }
+
+            return comments.map((comment, commentIndex) => `
+                <div class="comment-item">
+                    <div class="comment-text">${comment.text}</div>
+                    <div class="comment-meta">
+                        <span>${comment.date}</span>
+                        <button class="delete-comment" onclick="deleteComment(${levelIndex}, ${commentIndex})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle comment input
+        function toggleCommentInput(levelIndex) {
+            const inputContainer = document.getElementById(`input-${levelIndex}`);
+            const isVisible = inputContainer.style.display !== 'none';
+            
+            // Hide all other input containers
+            document.querySelectorAll('.comment-input-container').forEach(container => {
+                container.style.display = 'none';
+            });
+            
+            // Show/hide current input container
+            inputContainer.style.display = isVisible ? 'none' : 'block';
+            
+            if (!isVisible) {
+                document.getElementById(`comment-text-${levelIndex}`).focus();
+            }
+        }
+
+        // Save comment
+        function saveComment(levelIndex) {
+            const textarea = document.getElementById(`comment-text-${levelIndex}`);
+            const text = textarea.value.trim();
+            
+            if (text) {
+                const comment = {
+                    text: text,
+                    date: new Date().toLocaleString()
+                };
+                
+                universeLevels[levelIndex].comments.push(comment);
+                saveComments();
+                renderHierarchy();
+            }
+        }
+
+        // Delete comment
+        function deleteComment(levelIndex, commentIndex) {
+            if (confirm('Delete this design note?')) {
+                universeLevels[levelIndex].comments.splice(commentIndex, 1);
+                saveComments();
+                renderHierarchy();
+            }
+        }
+
+        // Export design document
+        function exportDesign() {
+            let designDoc = '# NXW Game Design Document\n\n';
+            designDoc += `Generated: ${new Date().toLocaleString()}\n\n`;
+            
+            designDoc += '## Game Flow\n\n';
+            designDoc += '1. Character Creation\n';
+            designDoc += '2. Choose Starting Location\n';
+            designDoc += '3. Tutorial & Basic Training\n';
+            designDoc += '4. Select Client Type\n';
+            designDoc += '5. Begin Multi-Scale Adventure\n\n';
+            
+            designDoc += '## Universe Hierarchy Design\n\n';
+            
+            universeLevels.forEach(level => {
+                designDoc += `### ${level.number}. ${level.name}\n`;
+                designDoc += `${level.description}\n\n`;
+                
+                if (level.comments.length > 0) {
+                    designDoc += '**Design Notes:**\n';
+                    level.comments.forEach(comment => {
+                        designDoc += `- ${comment.text} (${comment.date})\n`;
+                    });
+                    designDoc += '\n';
+                } else {
+                    designDoc += '*No design notes yet*\n\n';
+                }
+            });
+            
+            // Create and download file
+            const blob = new Blob([designDoc], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'nxw-game-design.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComments();
+            renderHierarchy();
+        });
+    </script>
+</body>
+</html>
