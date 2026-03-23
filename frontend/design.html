@@ -604,13 +604,14 @@
 
             reversedLevels.forEach((level, reversedIndex) => {
                 const originalIndex = universeLevels.length - 1 - reversedIndex;
+                const correctNumber = originalIndex + 1; // Fix: Use original index + 1 for correct numbering
                 
                 const levelDiv = document.createElement('div');
                 levelDiv.className = 'level-item';
                 levelDiv.innerHTML = `
                     <div class="level-header">
                         <div class="level-name">${level.name}</div>
-                        <div class="level-number">${level.number}</div>
+                        <div class="level-number">${correctNumber}</div>
                     </div>
                     <div class="level-description">${level.description}</div>
                     
