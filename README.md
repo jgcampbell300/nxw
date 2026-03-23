@@ -156,3 +156,37 @@ Different gameplay experiences at different scales:
 - **Marketing**: Community building and promotion
 - **Funding**: Investment or crowdfunding strategy
 - **Compliance**: Data protection and gaming regulations
+
+## 🎯 Wanted & Needed
+
+### 👥 Development Team
+- **Backend Developers**: API specialists, database architects
+- **Frontend Developers**: Web interface experts, real-time systems
+- **Game Engine Developers**: Unity/Godot specialists, client applications
+- **DevOps Engineers**: Infrastructure, deployment, scaling
+
+### 🎨 Content Creators
+- **3D Artists & Modelers**: Buildings, ships, characters, environments
+- **Sound Designers**: Audio effects, music, ambient sounds
+- **Writers & Lore Masters**: Story creation, quest design, world building
+- **UI/UX Designers**: Interface design, user experience optimization
+
+### 🛠️ Technical Resources
+- **Cloud Infrastructure**: AWS/Azure specialists, auto-scaling experts
+- **Database Experts**: PostgreSQL, spatial data, performance optimization
+- **Security Specialists**: Authentication, data protection, anti-cheat
+- **QA Testers**: Quality assurance, bug hunting, user testing
+
+### 💰 Business & Legal
+- **Legal Counsel**: Gaming law, terms of service, intellectual property
+- **Business Development**: Partnerships, monetization, growth strategy
+- **Marketing Experts**: Community building, social media, user acquisition
+- **Community Managers**: Discord/moderation, player engagement, support
+
+### 🚀 How to Contribute
+- **GitHub**: Fork the repository and submit pull requests
+- **Discord**: Join our community server (coming soon)
+- **Email**: Contact us for collaboration opportunities
+- **Issues**: Report bugs or suggest features on GitHub
+
+**Join us in building the universe's most ambitious MMORPG!**
