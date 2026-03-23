@@ -86,11 +86,6 @@
             border-color: transparent;
         }
 
-        .discord-cta {
-            background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(42, 26, 58, 0.9));
-            border: 1px solid rgba(88, 101, 242, 0.55);
-        }
-
         .discord-button {
             display: inline-block;
             background: linear-gradient(45deg, #5865f2, #7b86ff);
@@ -99,7 +94,6 @@
             padding: 10px 18px;
             border-radius: 6px;
             font-weight: 700;
-            margin-top: 12px;
             transition: transform 0.2s ease;
         }
 
@@ -107,10 +101,12 @@
             transform: translateY(-2px);
         }
 
-        .discord-note {
-            color: #b3d9ff;
-            font-size: 0.85em;
-            margin-top: 10px;
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
         }
 
         .container {
@@ -330,15 +326,6 @@
 
         <div class="separator"></div>
 
-        <div class="card discord-cta">
-            <h3>💬 Join The Discord</h3>
-            <p style="color: #ffffff;">Join the NXV community to talk design, share ideas, and help shape the project in real time.</p>
-            <a href="https://discord.gg/UZZS3vYhCd" target="_blank" rel="noopener noreferrer" class="discord-button">Join Discord</a>
-            <p class="discord-note">Join the NXV Discord server to connect with the project community.</p>
-        </div>
-
-        <div class="separator"></div>
-
         <div class="card">
             <h3>📢 Announcements</h3>
             <div style="background: linear-gradient(135deg, #1e3c72, #2a5298); padding: 20px; border-radius: 8px; margin-top: 10px;">
@@ -413,7 +400,10 @@
             </div>
             <div style="background: linear-gradient(45deg, #1e3c72, #2a5298); padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;">
                 <p style="color: #ffffff; margin: 0 0 10px 0; font-weight: bold;">🚀 Join us in building the universe's most ambitious MMORPG!</p>
-                <a href="https://github.com/jgcampbell300/nxw" target="_blank" style="background: linear-gradient(45deg, #00ffff, #0099ff); color: #000033; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; display: inline-block; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">🔗 Contribute on GitHub</a>
+                <div class="cta-links">
+                    <a href="https://github.com/jgcampbell300/nxw" target="_blank" style="background: linear-gradient(45deg, #00ffff, #0099ff); color: #000033; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; display: inline-block; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">🔗 Contribute on GitHub</a>
+                    <a href="https://discord.gg/UZZS3vYhCd" target="_blank" rel="noopener noreferrer" class="discord-button">💬 Join Discord</a>
+                </div>
             </div>
         </div>
 
