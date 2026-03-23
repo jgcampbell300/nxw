@@ -55,10 +55,10 @@ Different gameplay experiences at different scales:
 
 ### 7D2D-style Client (Ground Level)
 - Survival and base building
-- Resource gathering and crafting
+- Resource mining, gathering and crafting
 - Ground-level exploration
 
-### Adventure Client (Dungeon/Instance)
+### Adventure Client (Dungeon/Instance/Free Play)
 - RPG-style gameplay (Project Gorgon/WoW-like)
 - Quests and adventures
 - Character progression
@@ -78,7 +78,7 @@ Different gameplay experiences at different scales:
 [Setup instructions to be added]
 
 ## 💭 Thoughts & Ideas
-
+    
 ### Game Design Concepts
 - **Multi-scale progression**: Players can operate at different universe scales simultaneously
 - **Cross-client interaction**: Actions in one client affect other scales/clients
