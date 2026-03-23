@@ -16,6 +16,74 @@
             background: #000033;
             color: #ffffff;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(90deg, #1a1a2e, #2a1a3a);
+            border-bottom: 2px solid #443355;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 5px;
+        }
+
+        .nav-link {
+            background: rgba(100, 200, 255, 0.1);
+            border: 1px solid rgba(100, 200, 255, 0.3);
+            color: #b3d9ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background: rgba(100, 200, 255, 0.2);
+            border-color: rgba(100, 200, 255, 0.5);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #000033;
+            border-color: transparent;
         }
 
         .container {
@@ -112,6 +180,19 @@
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-logo">NXW</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">🏠 Home</a></li>
+                <li><a href="design.html" class="nav-link">📋 Design</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
             <div style="text-align: center; margin-bottom: 10px;">
@@ -188,11 +269,6 @@
             <h3>Home</h3>
             <p style="color: #b3d9ff; margin-bottom: 15px;">Welcome to NXW - Your gateway to the multi-scale MMORPG universe.</p>
             <p style="color: #888; font-size: 0.9em; line-height: 1.4;">Explore a massive universe spanning from cosmic scale to building level, with multiple gameplay styles and client types to suit every player.</p>
-            <div style="margin-top: 20px; text-align: center;">
-                <a href="design.html" style="background: linear-gradient(45deg, #00ffff, #ff00ff); color: #000033; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    📋 Game Design & Planning
-                </a>
-            </div>
         </div>
 
         <div id="message-area"></div>
