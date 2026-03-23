@@ -162,6 +162,7 @@ Different gameplay experiences at different scales:
 ### 👥 Development Team
 - **Backend Developers**: API specialists, database architects
 - **Frontend Developers**: Web interface experts, real-time systems
+- **Web Developers**: Full-stack web development, responsive design, web optimization
 - **Game Engine Developers**: Unity/Godot specialists, client applications
 - **DevOps Engineers**: Infrastructure, deployment, scaling
 
