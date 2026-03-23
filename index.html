@@ -254,14 +254,15 @@
             <div class="system-item">
                 <h3>🔧</h3>
                 <div id="system-status" class="loading">Loading...</div>
-            </div>
-            <div class="system-item">
-                <h3>👥</h3>
-                <div id="session-count" class="loading">Loading...</div>
+                <div id="status-detail" class="loading">Status: Loading...</div>
             </div>
             <div class="system-item">
                 <h3>🌌</h3>
                 <div id="entity-count" class="loading">Loading...</div>
+            </div>
+            <div class="system-item">
+                <h3>👥</h3>
+                <div id="session-count" class="loading">Loading...</div>
             </div>
         </div>
 
@@ -453,10 +454,8 @@
         async function loadSystemStatus() {
             const status = await fetchAPI('/');
             if (status) {
-                document.getElementById('system-status').innerHTML = `
-                    <strong>API Status:</strong> Online<br>
-                    <strong>Status:</strong> ${status.message}
-                `;
+                document.getElementById('system-status').innerHTML = 'Online';
+                document.getElementById('status-detail').innerHTML = `Status: ${status.message}`;
             }
         }
 
