@@ -1,5 +1,5 @@
 """
-Main backend application for NXW MMORPG
+Main backend application for NXV MMORPG
 Handles universe management, client coordination, and API endpoints
 """
 
@@ -17,7 +17,7 @@ from shared.models.universe import (
 
 
 app = FastAPI(
-    title="NXW - Nxverse Web API",
+    title="NXV - Nxverse Web API",
     description="API for multi-scale MMORPG universe",
     version="0.1.0"
 )
@@ -40,7 +40,7 @@ active_sessions: Dict[str, ClientSession] = {}
 
 @app.get("/")
 async def root():
-    return {"message": "NXW API is running", "version": "0.1.0"}
+    return {"message": "NXV API is running", "version": "0.1.0"}
 
 
 @app.get("/universe/levels")

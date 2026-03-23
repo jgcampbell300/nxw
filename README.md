@@ -1,4 +1,4 @@
-# NXW - Nxverse Web MMORPG
+# NXV - Nxverse Web MMORPG
 
 A massive multi-scale MMORPG universe connecting different gameplay styles across cosmic to building levels.
 

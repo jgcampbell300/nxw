@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# NXW Backend Server Startup Script
+# NXV Backend Server Startup Script
 # Kills any existing processes and starts fresh
 
 echo "🔧 Stopping any existing servers..."
@@ -10,7 +10,7 @@ pkill -f "python.*app.py" 2>/dev/null
 echo "⏳ Waiting for ports to free..."
 sleep 2
 
-echo "🚀 Starting NXW backend server..."
+echo "🚀 Starting NXV backend server..."
 cd /home/jgcampbell300/PycharmProjects/nxw
 source .venv/bin/activate
 export PYTHONPATH=/home/jgcampbell300/PycharmProjects/nxw:$PYTHONPATH

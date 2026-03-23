@@ -11,7 +11,7 @@
     "test": "python -m pytest"
   },
   "keywords": ["mmorpg", "game", "universe", "multi-scale", "space", "factory"],
-  "author": "NXW Team",
+  "author": "NXV Team",
   "license": "MIT",
   "dependencies": {
     "fastapi": "^0.104.1",
