@@ -349,6 +349,55 @@
             50% { opacity: 1; }
         }
 
+        .separator {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            margin: 40px 0;
+            border-radius: 1px;
+        }
+
+        .kardashev-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .kardashev-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: #2a1a3a;
+            border: 2px solid #443355;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .kardashev-item:hover {
+            border-color: #00ffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .kardashev-type {
+            background: linear-gradient(45deg, #00ffff, #0099ff);
+            color: #000033;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9em;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .kardashev-name {
+            color: #b3d9ff;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
         .export-btn {
             background: linear-gradient(45deg, #00ffff, #ff00ff);
             color: #000033;
@@ -420,6 +469,45 @@
                 <div class="flow-arrow">→</div>
                 <div class="flow-item">⚡ Begin Multi-Scale Adventure</div>
             </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="design-section">
+            <h2 class="section-title">🌌 Kardashev Scale Types - Game Stages</h2>
+            <div class="kardashev-list">
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type I</span>
+                    <span class="kardashev-name">(Planetary)</span>
+                </div>
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type II</span>
+                    <span class="kardashev-name">(Stellar)</span>
+                </div>
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type III</span>
+                    <span class="kardashev-name">(Galactic)</span>
+                </div>
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type IV</span>
+                    <span class="kardashev-name">(Universal)</span>
+                </div>
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type V</span>
+                    <span class="kardashev-name">(Multiversal)</span>
+                </div>
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type VI</span>
+                    <span class="kardashev-name">(Dimension/Time)</span>
+                </div>
+                <div class="kardashev-item">
+                    <span class="kardashev-type">Type VII</span>
+                    <span class="kardashev-name">(Omniversal)</span>
+                </div>
+            </div>
+            <p style="color: #b3d9ff; font-size: 0.9em; margin-top: 15px; text-align: center;">
+                🎯 Progress through each stage to achieve mastery of the universe!
+            </p>
         </div>
 
         <div class="game-flow-section">
