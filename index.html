@@ -118,31 +118,32 @@
             margin-bottom: 40px;
         }
 
-        .system-cards {
+        .system-bar {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .system-cards .card {
-            flex: 1;
-            margin-bottom: 0;
-            height: auto;
-            padding: 8px 12px;
+            justify-content: space-between;
+            align-items: center;
             background: #2a1a3a;
             border: 1px solid #443355;
             border-radius: 6px;
-            text-align: center;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            gap: 20px;
         }
 
-        .system-cards .card h3 {
+        .system-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .system-item h3 {
             color: #00ffff;
-            margin-bottom: 5px;
+            margin: 0;
             font-size: 0.85em;
             font-weight: 600;
         }
 
-        .system-cards .loading {
+        .system-item .loading {
             color: #b3d9ff;
             font-style: italic;
             font-size: 0.9em;
@@ -249,17 +250,17 @@
             <div class="subtitle">Nxverse Web - Multi-Scale MMORPG Universe</div>
         </header>
 
-        <div class="system-cards">
-            <div class="card">
-                <h3>🔧 System Status</h3>
+        <div class="system-bar">
+            <div class="system-item">
+                <h3>🔧</h3>
                 <div id="system-status" class="loading">Loading...</div>
             </div>
-            <div class="card">
-                <h3>👥 Active Sessions</h3>
+            <div class="system-item">
+                <h3>👥</h3>
                 <div id="session-count" class="loading">Loading...</div>
             </div>
-            <div class="card">
-                <h3>🌌 Universe Entities</h3>
+            <div class="system-item">
+                <h3>🌌</h3>
                 <div id="entity-count" class="loading">Loading...</div>
             </div>
         </div>
