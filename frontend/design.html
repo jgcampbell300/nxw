@@ -190,19 +190,22 @@
         }
 
         .add-comment-btn {
-            background: #00ffff;
-            color: #000033;
+            background: linear-gradient(45deg, #4a90e2, #357abd);
+            color: #ffffff;
             border: none;
             padding: 8px 16px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .add-comment-btn:hover {
-            transform: scale(1.05);
-            background: #ffffff;
+            background: linear-gradient(45deg, #5ba0f2, #4580cd);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .comment-list {
@@ -274,22 +277,34 @@
         }
 
         .save-btn {
-            background: #00ff88;
-            color: #000033;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .cancel-btn {
-            background: #666;
+            background: linear-gradient(45deg, #28a745, #20c997);
             color: #ffffff;
             border: none;
             padding: 8px 16px;
             border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn {
+            background: linear-gradient(45deg, #dc3545, #c82333);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .save-btn:hover, .cancel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .game-flow-section {
@@ -604,7 +619,7 @@
                         <div class="comments-title">💭 Design Notes (${level.comments.length})</div>
                         <div style="display: flex; gap: 10px;">
                             <button class="add-comment-btn" onclick="toggleCommentInput(${originalIndex})">+ Add Note</button>
-                            <button class="add-comment-btn" onclick="editLevel(${originalIndex})" style="background: linear-gradient(45deg, #ff8800, #ffaa00);">✏️ Edit Level</button>
+                            <button class="add-comment-btn" onclick="editLevel(${originalIndex})" style="background: linear-gradient(45deg, #ff6b35, #f7931e); color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.3); box-shadow: 0 2px 4px rgba(0,0,0,0.2);">✏️ Edit Level</button>
                         </div>
                     </div>
                         
