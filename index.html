@@ -109,6 +109,57 @@
             margin-top: 12px;
         }
 
+        .hierarchy-tree {
+            position: relative;
+            margin-top: 12px;
+            padding-left: 28px;
+        }
+
+        .hierarchy-tree::before {
+            content: "";
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00ffff, rgba(0, 255, 255, 0.15));
+        }
+
+        .tree-node {
+            position: relative;
+            margin: 8px 0;
+            padding: 8px 12px 8px 16px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #443355;
+            border-radius: 8px;
+            color: #b3d9ff;
+        }
+
+        .tree-node::before {
+            content: "";
+            position: absolute;
+            left: -17px;
+            top: 50%;
+            width: 17px;
+            height: 2px;
+            background: #00ffff;
+            transform: translateY(-50%);
+        }
+
+        .tree-level {
+            display: block;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .tree-detail {
+            display: block;
+            color: #7fb8ff;
+            font-size: 0.82em;
+            margin-top: 2px;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -411,7 +462,31 @@
 
         <div class="card">
             <h3>Universe Hierarchy</h3>
-            <div id="universe-levels" class="loading">Loading universe levels...</div>
+            <div class="hierarchy-tree">
+                <div class="tree-node"><span class="tree-level">Universe</span><span class="tree-detail">The full playable cosmos</span></div>
+                <div class="tree-node"><span class="tree-level">Superclusters</span><span class="tree-detail">Major cosmic regions</span></div>
+                <div class="tree-node"><span class="tree-level">Galaxy Clusters</span><span class="tree-detail">Collections of large galactic systems</span></div>
+                <div class="tree-node"><span class="tree-level">Galaxy Groups</span><span class="tree-detail">Smaller linked galaxy sets</span></div>
+                <div class="tree-node"><span class="tree-level">Galaxies</span><span class="tree-detail">Core interstellar play spaces</span></div>
+                <div class="tree-node"><span class="tree-level">Solar Neighborhood</span><span class="tree-detail">Nearby star systems and travel routes</span></div>
+                <div class="tree-node"><span class="tree-level">Solar System</span><span class="tree-detail">Star, planets, moons, and orbital infrastructure</span></div>
+                <div class="tree-node"><span class="tree-level">Planets</span><span class="tree-detail">Surface gameplay, settlements, and industries</span></div>
+                <div class="tree-node"><span class="tree-level">Biosphere</span><span class="tree-detail">Global life-support and ecology layer</span></div>
+                <div class="tree-node"><span class="tree-level">Biomes</span><span class="tree-detail">Region-specific environmental zones</span></div>
+                <div class="tree-node"><span class="tree-level">Continents</span><span class="tree-detail">Major landmasses and political divisions</span></div>
+                <div class="tree-node"><span class="tree-level">Hemispheres</span><span class="tree-detail">Large-scale planetary separation</span></div>
+                <div class="tree-node"><span class="tree-level">Regions</span><span class="tree-detail">Shared geographic or economic territories</span></div>
+                <div class="tree-node"><span class="tree-level">Countries</span><span class="tree-detail">Nation-level control and policy zones</span></div>
+                <div class="tree-node"><span class="tree-level">States / Provinces</span><span class="tree-detail">Sub-national administration layers</span></div>
+                <div class="tree-node"><span class="tree-level">Counties</span><span class="tree-detail">Local government and logistics regions</span></div>
+                <div class="tree-node"><span class="tree-level">Cities / Towns</span><span class="tree-detail">Urban hubs, factories, and player populations</span></div>
+                <div class="tree-node"><span class="tree-level">Neighborhoods</span><span class="tree-detail">Districts with specialized activity</span></div>
+                <div class="tree-node"><span class="tree-level">Streets</span><span class="tree-detail">Ground-level navigation and commerce lanes</span></div>
+                <div class="tree-node"><span class="tree-level">Addresses</span><span class="tree-detail">Specific locations for ownership and delivery</span></div>
+                <div class="tree-node"><span class="tree-level">Buildings</span><span class="tree-detail">Factories, homes, stations, and services</span></div>
+                <div class="tree-node"><span class="tree-level">Units / Apartments</span><span class="tree-detail">Player-scale interior spaces</span></div>
+                <div class="tree-node"><span class="tree-level">Rooms</span><span class="tree-detail">The smallest direct interaction layer</span></div>
+            </div>
         </div>
 
         <div class="separator"></div>
