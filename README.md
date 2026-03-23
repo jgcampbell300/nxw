@@ -184,9 +184,15 @@ Different gameplay experiences at different scales:
 - **Community Managers**: Discord/moderation, player engagement, support
 
 ### 🚀 How to Contribute
-- **GitHub**: Fork the repository and submit pull requests
+- **GitHub**: [🔗 Fork and contribute to the repository](https://github.com/jgcampbell300/nxw)
 - **Discord**: Join our community server (coming soon)
 - **Email**: Contact us for collaboration opportunities
 - **Issues**: Report bugs or suggest features on GitHub
 
-**Join us in building the universe's most ambitious MMORPG!**
+---
+
+## 🚀 Join Us in Building the Universe's Most Ambitious MMORPG!
+
+[![Contribute on GitHub](https://img.shields.io/badge/GitHub-Contribute-blue?style=for-the-badge&logo=github)](https://github.com/jgcampbell300/nxw)
+
+**Your skills can help create the next generation of multi-scale gaming!**
