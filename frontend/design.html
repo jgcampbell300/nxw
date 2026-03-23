@@ -601,9 +601,12 @@
                     
                     <div class="comments-section">
                         <div class="comments-header">
-                            <div class="comments-title">💭 Design Notes (${level.comments.length})</div>
+                        <div class="comments-title">💭 Design Notes (${level.comments.length})</div>
+                        <div style="display: flex; gap: 10px;">
                             <button class="add-comment-btn" onclick="toggleCommentInput(${originalIndex})">+ Add Note</button>
+                            <button class="add-comment-btn" onclick="editLevel(${originalIndex})" style="background: linear-gradient(45deg, #ff8800, #ffaa00);">✏️ Edit Level</button>
                         </div>
+                    </div>
                         
                         <div class="comment-input-container" id="input-${originalIndex}">
                             <textarea class="comment-input" id="comment-text-${originalIndex}" placeholder="Enter your design notes, ideas, or plans for this level..."></textarea>
@@ -680,6 +683,21 @@
                 universeLevels[levelIndex].comments.splice(commentIndex, 1);
                 saveComments();
                 renderHierarchy();
+            }
+        }
+
+        // Edit level information
+        function editLevel(levelIndex) {
+            const level = universeLevels[levelIndex];
+            const newName = prompt(`Edit level name:`, level.name);
+            const newDescription = prompt(`Edit level description:`, level.description);
+            
+            if (newName && newDescription) {
+                level.name = newName;
+                level.description = newDescription;
+                saveComments();
+                renderHierarchy();
+                showMessage(`Level "${newName}" updated successfully!`, 'info');
             }
         }
 
