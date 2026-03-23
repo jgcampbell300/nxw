@@ -119,15 +119,12 @@
         }
 
         .grid .card:first-child,
-        .grid .card:nth-child(2) {
-            grid-column: 1;
-            margin-bottom: 20px;
-            min-height: 120px;
-        }
-
+        .grid .card:nth-child(2),
         .grid .card:nth-child(3) {
             grid-column: 1;
             margin-bottom: 20px;
+            height: auto;
+            padding: 15px;
         }
 
         .grid .card:nth-child(4),
@@ -152,10 +149,12 @@
             margin-bottom: 0;
         }
 
-        .card h3 {
+        .grid .card:first-child h3,
+        .grid .card:nth-child(2) h3,
+        .grid .card:nth-child(3) h3 {
             color: #00ffff;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-size: 1em;
         }
 
         .loading {
