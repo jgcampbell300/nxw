@@ -19,7 +19,7 @@ from shared.models.universe import (
 app = FastAPI(
     title="NXV - Nxverse Web API",
     description="API for multi-scale MMORPG universe",
-    version="0.1.0"
+    version="0.1.1"
 )
 
 # CORS middleware for frontend integration
@@ -40,7 +40,7 @@ active_sessions: Dict[str, ClientSession] = {}
 
 @app.get("/")
 async def root():
-    return {"message": "NXV API is running", "version": "0.1.0"}
+    return {"message": "NXV API is running", "version": "0.1.1"}
 
 
 @app.get("/universe/levels")

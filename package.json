@@ -1,6 +1,6 @@
 {
   "name": "nxw",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nxverse Web - Multi-Scale MMORPG Universe",
   "main": "frontend/index.html",
   "scripts": {
