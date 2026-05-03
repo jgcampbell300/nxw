@@ -2,6 +2,12 @@
 
 A massive multi-scale MMORPG universe connecting different gameplay styles across cosmic to building levels.
 
+## 🌐 Visit the Live Page
+
+**[🚀 Click here to explore the NXV Universe](https://jgcampbell300.github.io/nxw/)**
+
+---
+
 ## Universe Hierarchy
 
 The game universe is structured at multiple scales:
@@ -97,6 +103,29 @@ Different gameplay experiences at different scales:
 - **Social systems**: Guilds, alliances, and territory control
 - **Exploration rewards**: Discover new systems and resources
 
+## 🔗 Blockchain & NFT Goals
+
+### Asset Ownership & Verification
+- **Blockchain Integration**: Create a transparent ledger for ecosystem asset ownership
+- **NFT-Based Ownership**: Issue NFTs for unique buildings, factories, ships, and properties
+- **Smart Contracts**: Auto-execute resource transfers, trading, and revenue sharing
+- **Decentralized Economy**: Enable true player ownership and cross-game asset portability
+- **Royalty System**: Automated royalties for creators and original builders
+
+### Implementation Strategy
+- **Layer 2 Integration**: Use Polygon, Arbitrum, or similar for low-cost transactions
+- **Cross-Chain Support**: Enable multichain NFT interoperability
+- **In-Game Marketplace**: Seamless NFT trading within the game ecosystem
+- **Wallet Integration**: Support MetaMask, WalletConnect, and major Web3 wallets
+- **Asset Standards**: Implement ERC-721/ERC-1155 standards for interoperability
+
+### Player Benefits
+- **True Ownership**: Players genuinely own and control their assets
+- **Play-to-Earn**: Monetize gameplay through asset creation and trading
+- **Inheritance & Trading**: Freely transfer or sell assets between players
+- **Fractional Ownership**: Share expensive assets through fractional NFTs
+- **Governance Tokens**: Community control over ecosystem development
+
 ## 📋 TODO
 
 ### High Priority
@@ -105,6 +134,10 @@ Different gameplay experiences at different scales:
 - [ ] Implement authentication system
 - [ ] Design client communication protocol
 - [ ] Create basic frontend interface
+- [ ] **Blockchain Integration**: Research and select blockchain/Layer 2 solution
+- [ ] **Smart Contract Development**: Design and deploy asset ownership contracts
+- [ ] **NFT Standard Implementation**: Create ERC-721/1155 compliant NFT system
+- [ ] **Wallet Integration**: Add Web3 wallet connectivity (MetaMask, WalletConnect)
 
 ### Medium Priority
 - [ ] Develop Factorio-style building client
@@ -197,3 +230,15 @@ Different gameplay experiences at different scales:
 [![Contribute on GitHub](https://img.shields.io/badge/GitHub-Contribute-blue?style=for-the-badge&logo=github)](https://github.com/jgcampbell300/nxw)
 
 **Your skills can help create the next generation of multi-scale gaming!**
+
+## Ecosystem Architecture
+
+Below is a high-level overview of the NXVerse ecosystem, showing how the core, wrapper, shared libraries, individual games, and blockchain/identity layer interact:
+
+![NXVerse Ecosystem Architecture](assets/images/nxverse-architecture.png)
+
+- **NXVerse (Core):** The main universe logic and data.
+- **NXW (Wrapper):** Web and API interface.
+- **Shared Libs:** Common code and models.
+- **Games:** Multiple game types (RPG, Strategy, Arcade, etc.) connect to the ecosystem.
+- **Blockchain/Identity:** Provides asset ownership, identity, and interoperability.
